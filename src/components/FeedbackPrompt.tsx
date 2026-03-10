@@ -98,10 +98,17 @@ const FeedbackPrompt = ({
                   {recipeName}
                 </h2>
                 <p className="text-sm text-muted-foreground mb-6">
-                  How was it? Help others decide.
+                  How was it?
                 </p>
 
                 <StarRating rating={rating} onRate={handleRate} size={36} />
+
+                <div className="flex items-center gap-1.5 mt-3">
+                  <Globe size={12} className="text-muted-foreground" />
+                  <span className="text-xs text-muted-foreground">
+                    Your rating helps others decide
+                  </span>
+                </div>
 
                 <button
                   onClick={onDidNotCook}
