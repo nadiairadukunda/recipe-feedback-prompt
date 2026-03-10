@@ -142,12 +142,18 @@ const FeedbackPrompt = ({
 
                 {/* Comment */}
                 <label className="text-sm font-medium text-foreground mb-2">
-                  Share any tips or thoughts
+                  {rating >= 4
+                    ? "Share your tips or thoughts with the Mob community"
+                    : "Leave feedback for the Mob team"}
                 </label>
                 <textarea
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
-                  placeholder="E.g. I added extra chilli — highly recommend!"
+                  placeholder={
+                    rating >= 4
+                      ? "E.g. I added extra chilli — highly recommend!"
+                      : "What could we improve? Your feedback stays private."
+                  }
                   className="w-full rounded-xl border border-input bg-secondary/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
                   rows={3}
                 />
