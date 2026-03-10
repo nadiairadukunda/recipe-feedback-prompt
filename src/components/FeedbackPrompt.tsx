@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, X } from "lucide-react";
+import { Heart, X, Check, Pencil } from "lucide-react";
 import StarRating from "./StarRating";
 
 interface FeedbackPromptProps {
