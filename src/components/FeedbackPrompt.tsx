@@ -141,18 +141,35 @@ const FeedbackPrompt = ({
                 </div>
 
                 {/* Comment */}
-                <label className="text-sm font-medium text-foreground mb-2">
+                <label className="text-sm font-medium text-foreground mb-1">
                   {rating >= 4
                     ? "Share your tips or thoughts with the Mob community"
                     : "Leave feedback for the Mob team"}
                 </label>
+                <div className="flex items-center gap-1.5 mb-3">
+                  {rating >= 4 ? (
+                    <>
+                      <Globe size={12} className="text-muted-foreground" />
+                      <span className="text-xs text-muted-foreground">
+                        Visible to the Mob community
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <Lock size={12} className="text-muted-foreground" />
+                      <span className="text-xs text-muted-foreground">
+                        Private · only visible to Mob
+                      </span>
+                    </>
+                  )}
+                </div>
                 <textarea
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
                   placeholder={
                     rating >= 4
                       ? "E.g. I added extra chilli — highly recommend!"
-                      : "What could we improve? Your feedback stays private."
+                      : "What could we improve?"
                   }
                   className="w-full rounded-xl border border-input bg-secondary/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
                   rows={3}
