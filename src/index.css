@@ -1,4 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Serif+Display&display=swap');
+/* GeneralSans */
+@font-face {
+  font-family: "GeneralSans";
+  src: url("/fonts/GeneralSans-Variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GeneralSans";
+  src: url("/fonts/GeneralSans-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GeneralSans";
+  src: url("/fonts/GeneralSans-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GeneralSans";
+  src: url("/fonts/GeneralSans-Semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GeneralSans";
+  src: url("/fonts/GeneralSans-VariableItalic.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* PPRightGrotesk */
+@font-face {
+  font-family: "PPRightGrotesk";
+  src: url("/fonts/PPRightGrotesk-WideRegular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PPRightGrotesk";
+  src: url("/fonts/PPRightGrotesk-WideMedium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PPRightGrotesk";
+  src: url("/fonts/PPRightGrotesk-WideBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* PPRightGroteskSpatial */
+@font-face {
+  font-family: "PPRightGroteskSpatial";
+  src: url("/fonts/PPRightGrotesk-SpatialDark.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PPRightGroteskSpatial";
+  src: url("/fonts/PPRightGrotesk-SpatialBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
@@ -8,48 +89,35 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 8%;
-
     --card: 0 0% 100%;
     --card-foreground: 0 0% 8%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 8%;
-
     --primary: 0 0% 8%;
     --primary-foreground: 0 0% 100%;
-
     --secondary: 40 10% 96%;
     --secondary-foreground: 0 0% 8%;
-
     --muted: 40 10% 96%;
     --muted-foreground: 0 0% 45%;
-
     --accent: 40 10% 96%;
     --accent-foreground: 0 0% 8%;
-
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-
     --border: 0 0% 91%;
     --input: 0 0% 91%;
     --ring: 0 0% 8%;
-
     --radius: 0.75rem;
-
     --tag-yellow: 45 100% 94%;
     --tag-yellow-foreground: 35 80% 35%;
     --tag-blue: 210 100% 95%;
     --tag-blue-foreground: 210 60% 40%;
     --tag-red: 0 100% 95%;
     --tag-red-foreground: 0 60% 40%;
-
     --star-filled: 45 93% 58%;
     --star-empty: 0 0% 85%;
-
     --overlay: 0 0% 0%;
-
-    --font-display: 'DM Serif Display', serif;
-    --font-body: 'DM Sans', sans-serif;
+    --font-display: "PPRightGroteskSpatial", sans-serif;
+    --font-body: "GeneralSans", sans-serif;
   }
 }
 
@@ -60,8 +128,19 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
+    font-weight: 400;
   }
-  h1, h2, h3 {
+  /* Display headings — PPRightGroteskSpatial, matches MobTypography display* */
+  h1 {
     font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+  /* UI headings — GeneralSans, matches MobTypography heading* */
+  h2,
+  h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    letter-spacing: 0;
   }
 }
