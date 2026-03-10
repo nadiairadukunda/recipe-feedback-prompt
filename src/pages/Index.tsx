@@ -32,7 +32,7 @@ const Index = () => {
             onDismiss={() => setShowPrompt(false)}
             onDidNotCook={() => {
               setShowPrompt(false);
-              toast("Got it — we won't count that as a cook.", { duration: 3000 });
+              toast("Got it - we won't count that as a cook.", { duration: 3000 });
               console.log("Negative confirmation: user did not cook");
             }}
           />
