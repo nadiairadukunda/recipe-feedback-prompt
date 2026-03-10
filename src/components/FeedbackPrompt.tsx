@@ -152,25 +152,9 @@ const FeedbackPrompt = ({
                   rows={3}
                 />
 
-                {/* Save */}
-                <button
-                  onClick={() => setSaved(!saved)}
-                  className={`flex items-center gap-2 mt-4 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                    saved
-                      ? "bg-tag-red text-tag-red-foreground"
-                      : "bg-secondary text-secondary-foreground hover:bg-border"
-                  }`}
-                >
-                  <Heart
-                    size={16}
-                    className={saved ? "fill-current" : ""}
-                  />
-                  {saved ? "Saved to Liked" : "Save to Liked"}
-                </button>
-
                 {/* Submit */}
                 <button
-                  onClick={handleSubmit}
+                  onClick={handleCommentSubmit}
                   className="mt-5 w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:opacity-90 transition-opacity"
                 >
                   Submit
@@ -178,11 +162,59 @@ const FeedbackPrompt = ({
 
                 <button
                   onClick={() => {
-                    onSubmit({ rating, comment: "", saved });
+                    if (rating >= 4) {
+                      setStep("like");
+                    } else {
+                      onSubmit({ rating, comment: "", saved: false });
+                    }
                   }}
                   className="mt-2 text-center text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Skip
+                </button>
+              </motion.div>
+            )}
+
+            {step === "like" && (
+              <motion.div
+                key="like"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="flex flex-col items-center"
+              >
+                {/* Recipe thumbnail */}
+                <div className="w-16 h-16 rounded-xl overflow-hidden mb-4">
+                  <img
+                    src={recipeImage}
+                    alt={recipeName}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <h2 className="text-xl font-display text-foreground mb-1">
+                  Glad you enjoyed it!
+                </h2>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Would you like to save this recipe?
+                </p>
+
+                <button
+                  onClick={() => {
+                    setSaved(true);
+                    onSubmit({ rating, comment, saved: true });
+                  }}
+                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:opacity-90 transition-opacity"
+                >
+                  <Heart size={16} className="fill-current" />
+                  Save to Liked
+                </button>
+
+                <button
+                  onClick={() => onSubmit({ rating, comment, saved: false })}
+                  className="mt-3 text-center text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  No thanks
                 </button>
               </motion.div>
             )}
