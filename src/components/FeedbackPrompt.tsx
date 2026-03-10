@@ -28,6 +28,14 @@ const FeedbackPrompt = ({
     setTimeout(() => setStep("comment"), 400);
   };
 
+  const handleCommentSubmit = () => {
+    if (rating >= 4) {
+      setStep("like");
+    } else {
+      onSubmit({ rating, comment, saved: false });
+    }
+  };
+
   const handleSubmit = () => {
     onSubmit({ rating, comment, saved });
   };
