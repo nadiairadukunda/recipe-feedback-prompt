@@ -21,7 +21,7 @@ const FeedbackPrompt = ({
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const [saved, setSaved] = useState(false);
-  const [step, setStep] = useState<"rate" | "comment">("rate");
+  const [step, setStep] = useState<"rate" | "comment" | "like">("rate");
 
   const handleRate = (value: number) => {
     setRating(value);
