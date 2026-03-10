@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import RecipeDetail from "@/components/RecipeDetail";
+import HomeFeed from "@/components/HomeFeed";
 import FeedbackPrompt from "@/components/FeedbackPrompt";
 import BottomNav from "@/components/BottomNav";
 import { toast } from "sonner";
