@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, X } from "lucide-react";
+import { Heart, X, Check, Pencil } from "lucide-react";
 import StarRating from "./StarRating";
 
 interface FeedbackPromptProps {
@@ -21,7 +21,7 @@ const FeedbackPrompt = ({
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const [saved, setSaved] = useState(false);
-  const [step, setStep] = useState<"rate" | "comment" | "like">("rate");
+  const [step, setStep] = useState<"rate" | "comment" | "like" | "saved">("rate");
 
   const handleRate = (value: number) => {
     setRating(value);
@@ -183,7 +183,6 @@ const FeedbackPrompt = ({
                 exit={{ opacity: 0, y: -10 }}
                 className="flex flex-col items-center"
               >
-                {/* Recipe thumbnail */}
                 <div className="w-16 h-16 rounded-xl overflow-hidden mb-4">
                   <img
                     src={recipeImage}
@@ -202,7 +201,7 @@ const FeedbackPrompt = ({
                 <button
                   onClick={() => {
                     setSaved(true);
-                    onSubmit({ rating, comment, saved: true });
+                    setStep("saved");
                   }}
                   className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:opacity-90 transition-opacity"
                 >
@@ -215,6 +214,56 @@ const FeedbackPrompt = ({
                   className="mt-3 text-center text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   No thanks
+                </button>
+              </motion.div>
+            )}
+
+            {step === "saved" && (
+              <motion.div
+                key="saved"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="flex flex-col items-center"
+              >
+                <div className="w-16 h-16 rounded-xl overflow-hidden mb-4">
+                  <img
+                    src={recipeImage}
+                    alt={recipeName}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <h2 className="text-xl font-display text-foreground mb-2">
+                  Thanks for your feedback!
+                </h2>
+
+                {/* Saved confirmation banner */}
+                <div className="w-full flex items-center justify-between rounded-xl bg-accent/40 px-4 py-3 mb-5">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+                      <Check size={14} className="text-primary-foreground" />
+                    </div>
+                    <span className="text-sm font-medium text-foreground">
+                      Saved to All Recipes
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => {
+                      // In production this would open the Collections picker
+                      console.log("Edit collections tapped");
+                    }}
+                    className="px-3 py-1.5 rounded-lg border border-border text-sm font-medium text-foreground hover:bg-secondary transition-colors"
+                  >
+                    Edit
+                  </button>
+                </div>
+
+                <button
+                  onClick={() => onSubmit({ rating, comment, saved: true })}
+                  className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:opacity-90 transition-opacity"
+                >
+                  Done
                 </button>
               </motion.div>
             )}
