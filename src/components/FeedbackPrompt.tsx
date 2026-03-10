@@ -151,7 +151,7 @@ const FeedbackPrompt = ({
                 <label className="text-sm font-medium text-foreground mb-1">
                   {rating >= 4
                     ? "Share your tips or thoughts with the Mob community"
-                    : "Leave feedback for the Mob team"}
+                    : "Sorry it missed the mark — tell us what went wrong"}
                 </label>
                 <div className="flex items-center gap-1.5 mb-3">
                   {rating >= 4 ? (
