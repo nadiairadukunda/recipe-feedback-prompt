@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import RecipeDetail from "@/components/RecipeDetail";
+import HomeFeed from "@/components/HomeFeed";
 import FeedbackPrompt from "@/components/FeedbackPrompt";
 import BottomNav from "@/components/BottomNav";
 import { toast } from "sonner";
@@ -12,7 +12,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background max-w-md mx-auto relative">
-      <RecipeDetail />
+      <HomeFeed />
       <BottomNav />
 
       <AnimatePresence>
